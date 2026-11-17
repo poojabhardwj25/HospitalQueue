@@ -6,11 +6,12 @@ const connectDB=require('./db');
 dotenv.config();
 
 connectDB();
-
 const app=express();
-
 app.use(express.json());
 app.use(cors());
+const patientRoutes=require('./routes/patientRoutes');
+app.use('/api/patients',patientRoutes);
+
 
 app.get('/',(req,res)=>{
     res.json({message:'Hospital Queue Sysytem API is running succesfully...'});
